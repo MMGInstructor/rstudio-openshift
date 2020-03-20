@@ -64,8 +64,8 @@ RUN chmod ug+rw /etc/passwd && \
     chmod ug+rw /etc/group && \
     chgrp root /etc/shadow && \
     chmod ug+rw /etc/shadow && \
-    chgrp root /usr/local/bin/fix.sh \
-    && chmod 777 /usr/local/bin/fix.sh
+    chgrp root /usr/local/bin/fix.sh && \
+    chmod 777 /usr/local/bin/fix.sh
 
 
 USER $APP_UID:$APP_GID
