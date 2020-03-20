@@ -60,14 +60,11 @@ RUN chmod go+w -R $HOME && \
 RUN chgrp root -R /usr/local/lib/R/site-library
 
 COPY fix.sh /usr/local/bin/fix.sh
-RUN chmod ug+rw /etc/passwd
-RUN chmod ug+rw /etc/group
-
-RUN chgrp root /etc/shadow
-
-RUN chmod ug+rw /etc/shadow
-
-RUN chgrp root /usr/local/bin/fix.sh \
+RUN chmod ug+rw /etc/passwd && \
+    chmod ug+rw /etc/group && \
+    chgrp root /etc/shadow && \
+    chmod ug+rw /etc/shadow && \
+    chgrp root /usr/local/bin/fix.sh \
     && chmod 777 /usr/local/bin/fix.sh
 
 
