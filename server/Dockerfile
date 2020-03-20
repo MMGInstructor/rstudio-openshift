@@ -68,7 +68,7 @@ RUN chgrp root /etc/shadow
 RUN chmod ug+rw /etc/shadow
 
 RUN chgrp root /usr/local/bin/fix.sh \
-    && chmod 774 /usr/local/bin/fix.sh
+    && chmod 777 /usr/local/bin/fix.sh
 
 
 USER $APP_UID:$APP_GID
