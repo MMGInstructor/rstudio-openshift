@@ -142,7 +142,6 @@ objects:
       type: Git
       git:
         uri: https://github.com/MMGInstructor/rstudio-openshift.git
-        ref: dev
       contextDir: server
     strategy:
       dockerStrategy:
