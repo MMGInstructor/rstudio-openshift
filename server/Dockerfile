@@ -46,7 +46,7 @@ COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 COPY .Renviron $HOME/.Renviron
 
 #OpenShift additions
-RUN if [ "$USERNAME" != "rstudio" ] ; then useradd -m $USERNAME ; fi
+RUN if [ "$USERNAME" != "rstudio" ] ; then useradd -m -g 0 $USERNAME ; fi
 
 RUN chmod a+x /usr/local/bin/start.sh
 
@@ -54,7 +54,7 @@ RUN chmod go+w -R $HOME && \
     usermod -u 988 rstudio-server && \
     groupmod -g 988 rstudio-server && \
     usermod -u "$APP_UID" "$USERNAME" && \
-    #groupmod -g "$APP_GID" "$USERNAME" && \
+    groupmod -g "$APP_GID" "$USERNAME" && \
     chmod -R go+w /tmp/downloaded_packages /etc/rstudio/rsession.conf
 
 RUN chgrp root -R /usr/local/lib/R/site-library
@@ -65,10 +65,10 @@ RUN chmod ug+rw /etc/passwd && \
     chgrp root /etc/shadow && \
     chmod ug+rw /etc/shadow && \
     chgrp root /usr/local/bin/fix.sh && \
-    chmod 777 /usr/local/bin/fix.sh
+    chmod 774 /usr/local/bin/fix.sh
 
 
-USER $APP_UID:0
+USER $APP_UID:$APP_GID
 WORKDIR $HOME
 EXPOSE 8787 3838
 #MAINTAINER
