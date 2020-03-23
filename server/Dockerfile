@@ -4,7 +4,7 @@ FROM rocker/tidyverse:3.4.4
 RUN apt-get update && apt-get install --no-install-recommends -y \
     nano=2.7.4-1 \
     libcurl4-openssl-dev \
-    bash-completion \
+   # bash-completion \
     openssh-client \
     less=481-2.1 \
     htop=2.0.2-1 \
