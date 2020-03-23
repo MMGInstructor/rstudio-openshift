@@ -4,6 +4,8 @@ echo "Creating passwd entries"
 tempfile=$(mktemp)
 sed -e "s/^rstudio.*//g" /etc/passwd > $tempfile
 sed -e "s/^$USERNAME.*//g" /etc/passwd > $tempfile
+#Eliminio lineas vacias
+sed -e "/^$/d" $tempfile
 cp $tempfile /etc/passwd
 rm -f $tempfile
 echo "rstudio-server:x:$(id -u):$(id -g)::$HOME:" >> /etc/passwd
