@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "Adding users"
+id
 /usr/local/bin/fix.sh
 echo "Done"
 
